@@ -5,16 +5,16 @@ const messageSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
-  message_from: {
+  from: {
     type: String,
     require: true,
   },
-  message_to: {
+  to: {
     type: String,
     require: true,
   },
   content: {
-    type: Text,
+    type: String,
     require: true,
   },
 });
