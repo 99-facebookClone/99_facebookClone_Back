@@ -7,6 +7,7 @@ const cors = require('cors');
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 const mongoDB = require('./schemas/index');
+const Message = require('./schemas/message')
 const swaggerUi = require('swagger-ui-express');
 const swaggerFile = require('./swagger-output');
 require('dotenv').config();
@@ -26,42 +27,76 @@ app.use(
   cors({
     origin: '*',
     credentials: 'true',
-    // cors options
   })
 );
 
 // swagger
 app.use('/api/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
-let rooms = [];
+let roomList = [];
+
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
 io.on('connection', (socket) => {
-  console.log('connect on');
+  console.log('a user connected');
+
+  io.emit('room_list', roomList);
+
   socket.on('request_message', (msg) => {
-    // response_message로 접속중인 모든 사용자에게 msg 를 담은 정보를 방출한다.
     io.emit('response_message', msg);
   });
 
-  // 방참여 요청
-  socket.on('req_join_room', async (msg) => {
-    let roomName = 'Room_' + msg;
-    if (!rooms.includes(roomName)) {
-      rooms.push(roomName);
+  socket.on('req_join_room', (roomName) => {
+    roomName = 'Room_' + roomName;
+    if (!roomList.includes(roomName)) {
+      roomList.push(roomName);
     }
     socket.join(roomName);
     io.to(roomName).emit('noti_join_room', '방에 입장하였습니다.');
   });
 
-  // 채팅방에 채팅 요청
   socket.on('req_room_message', async (msg) => {
     let userCurrentRoom = getUserCurrentRoom(socket);
     io.to(userCurrentRoom).emit('noti_room_message', msg);
+
+    // mongoDB에 저장
+    const message = new Message({
+      room_id: userCurrentRoom,
+      from: msg.name,
+      to: '상대name',
+      content: msg.message,
+    });
+
+    try {
+      await message.save();
+      console.log('메시지 저장 성공');
+    } catch (err) {
+      console.error('메시지 저장 실패: ', err);
+    }
   });
 
-  socket.on('disconnect', async () => {
+  socket.on('req_create_room', (roomName) => {
+    roomName = 'Room_' + roomName;
+    if (!roomList.includes(roomName)) {
+      roomList.push(roomName);
+    }
+    io.emit('room_list', roomList);
+    io.emit('noti_join_my_room', roomName);
+  });
+
+  socket.on("room_list", (roomList) => {
+    $("#select-room").empty(); // 기존의 옵션을 모두 제거
+    $("#select-room").append('<option value="none" selected="selected">방을 선택해주세요</option>'); // 기본 옵션 추가
+  
+    roomList.forEach((room) => {
+      $("#select-room").append(`<option value="${room}">${room}</option>`); // 방 목록 옵션 추가
+    });
+  });
+  
+
+  socket.on('disconnect', () => {
     console.log('user disconnected');
   });
 });
