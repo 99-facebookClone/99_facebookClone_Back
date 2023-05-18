@@ -1,0 +1,1125 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "월드컵 어쩌구",
+    "description": "17조는 짱짱맨이다",
+    "version": "1.0.0"
+  },
+  "host": "13.125.1.214/",
+  "basePath": "/",
+  "schemes": ["http"],
+  "paths": {
+    "/api/worldcup/": {
+      "post": {
+        "description": "월드컵 생성 api",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": { "example": "제목입니다." },
+                "content": { "example": "글입니다" },
+                "choices": {
+                  "example": [
+                    {
+                      "choice_name": "떡볶이",
+                      "choice_url": "http://www.kfjals.com"
+                    },
+                    {
+                      "choice_name": "김밥",
+                      "choice_url": "http://www…"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "worldcups": {
+                  "type": "object",
+                  "properties": {
+                    "worldcup_id": { "example": 1 },
+                    "user_id": { "example": 1 },
+                    "content": { "example": "내용입니다." },
+                    "choices": {
+                      "example": [
+                        {
+                          "choice_name": "떡볶이",
+                          "choice_url": "http://www.kfjals.com"
+                        },
+                        {
+                          "choice_name": "김밥",
+                          "choice_url": "http://www…"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "예외 케이스 외의 처리 에러",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": { "example": "월드컵 작성에 실패하였습니다" }
+              }
+            }
+          },
+          "403": {
+            "description": "로그인 쿠키 오류",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": { "example": "로그인이 필요한 기능입니다." }
+              }
+            }
+          },
+          "412": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": { "example": "데이터 형식이 올바르지 않습니다" }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "description": "월드컵 게시물 전체 조회 api",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "worldcups": {
+                  "example": [
+                    {
+                      "worldcup_id": 64,
+                      "user_id": 4,
+                      "nickname": "siwon",
+                      "title": "타이틀",
+                      "content": "테스트",
+                      "likes": 0,
+                      "play_count": 0,
+                      "createdAt": "2023-05-08T15:16:35.000Z",
+                      "updatedAt": "2023-05-08T15:16:35.000Z",
+                      "choices": [
+                        {
+                          "choice_name": "떡볶이",
+                          "choice_url": "http://www.kfjals.com"
+                        },
+                        {
+                          "choice_name": "김밥",
+                          "choice_url": "http://www…"
+                        }
+                      ]
+                    },
+                    {
+                      "worldcup_id": 64,
+                      "user_id": 4,
+                      "nickname": "jjm",
+                      "title": "드라마 월드컵!",
+                      "content": "인생 드라마를 골라요",
+                      "likes": 1,
+                      "play_count": 10,
+                      "createdAt": "2023-05-08T15:16:35.000Z",
+                      "updatedAt": "2023-05-08T15:16:35.000Z",
+                      "choices": [
+                        {
+                          "choice_name": "이상한 변호사 우영우",
+                          "choice_url": "https://i.namu.wiki/i/Pa2G4uR4bpcE_nrT8MBw5C8DWkDviK4oLP1NCsrkjirs4JlXYFwsudKsk8ExqwptfcKfyJIcCWczkIbmFbENkXV4idBubECUz46iKEx1EXDMEyUNWwuauTyn_bzdBrtu1BFGP4OA4fRD7AxapcegGQ.webp"
+                        },
+                        {
+                          "choice_name": "유미의 세포들",
+                          "choice_url": "https://i.namu.wiki/i/I-9nwpymGR0_QCo9C9Y0GOf0vrzYTy7oEkO0y-X6poLIX_qdwBdORMLUqaum8volslMe4DvrjyG6q0L9vqHq_Wsnb7Q0eLR3t6fJlKpFqxvcFVgxM6R6Z5FbPFUO3HNfkwUsK_H394qvFm1vwASJqA.webp"
+                        },
+                        {
+                          "choice_name": "작은 아씨들",
+                          "choice_url": "https://i.namu.wiki/i/uiF_QkGELCcwTNkZy_x5ZOH57eSpvcRIU6o4StyljNFjDvPFqKcaAXmZVEcI5IyahDIo9nhHlPWUXiC7CdJDq5CnXZnpkaDGkHywLiMb8f3j0lNVc-Yxl25viVFbDpm-GSKW1CiT0dkytGFGLMDy_Q.webp"
+                        },
+                        {
+                          "choice_name": "재벌집 막내 아들",
+                          "choice_url": "https://i.namu.wiki/i/6rr8meXT4C2GWb0EvuUpuASUOe-dRpfVXSrROUrRyMPXnaQeLuULZwiL6B0KjBAYbA_GIQ6xKZ672ruO_fGw2WXCVx-GZzvbop7bTmzCL1Yk0DxM-1kDlAm8ARr0Jx_gXHmCzU3qjUfsoxAPmq18UQ.webp"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "예외 케이스 외의 처리 에러",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": { "example": "월드컵 조회에 실패하였습니다" }
+              }
+            }
+          },
+          "404": {
+            "description": "게시글이 존재하지 않는 경우",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": {
+                  "example": "월드컵 게시물이 존재하지 않습니다."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/worldcup/{worldcup_id}": {
+      "get": {
+        "description": "월드컵 게시물 상세 조회",
+        "parameters": [
+          {
+            "name": "worldcup_id",
+            "in": "path",
+            "required": true,
+            "type": "int"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "worldcup": {
+                  "example": {
+                    "worldcup_id": 2,
+                    "user_id": 1,
+                    "nickname": "kim_cool",
+                    "title": "안녕하세요 2번째 게시글 제목입니다.",
+                    "likes": 5,
+                    "createdAt": "2022-07-25T07:45:56.000Z",
+                    "updatedAt": "2022-07-25T07:45:56.000Z",
+                    "choices": [
+                      {
+                        "choice_name": "떡볶이",
+                        "choice_url": "http://www.kfjals.com",
+                        "worldcup_choice_id": 115
+                      },
+                      {
+                        "choice_name": "김밥",
+                        "choice_url": "http://www…",
+                        "worldcup_choice_id": 116
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "예외 케이스 외의 처리 에러",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": { "example": "월드컵 조회에 실패하였습니다" }
+              }
+            }
+          },
+          "404": {
+            "description": "게시글이 존재하지 않는 경우",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": {
+                  "example": "월드컵 게시물이 존재하지 않습니다."
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "worldcup_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": { "example": "제목입니다." },
+                "content": { "example": "글입니다" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "updatedWorldcup": {
+                  "example": {
+                    "worldcup_id": 2,
+                    "user_id": 1,
+                    "title": "안녕하세요 2번째 게시글 제목입니다.",
+                    "content": "내용입니다."
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "예외 케이스 외의 처리 에러",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": { "example": "월드컵 수정에 실패하였습니다" }
+              }
+            }
+          },
+          "403": {
+            "description": "로그인 쿠키 오류",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": { "example": "로그인이 필요한 기능입니다." }
+              }
+            }
+          },
+          "404": {
+            "description": "게시글이 존재하지 않는 경우",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": {
+                  "example": "월드컵 게시물이 존재하지 않습니다."
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": { "example": "데이터 형식이 올바르지 않습니다" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "worldcup_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "status:200",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": { "example": "게시물 삭제 완료" }
+              }
+            }
+          },
+          "500": {
+            "description": "예외 케이스 외의 처리 에러",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": { "example": "월드컵 삭제에 실패하였습니다" }
+              }
+            }
+          },
+          "403": {
+            "description": "로그인 쿠키 오류",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": { "example": "로그인이 필요한 기능입니다." }
+              }
+            }
+          },
+          "404": {
+            "description": "게시글이 존재하지 않는 경우",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": {
+                  "example": "월드컵 게시물이 존재하지 않습니다."
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "게시글 삭제에 실패한 경우",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": {
+                  "example": "게시글이 정상적으로 삭제되지 않았습니다."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/worldcup/{worldcup_id}/comments": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "worldcup_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "comment": { "example": "댓글입니다." }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "status:200",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": { "example": "댓글 작성 완료" }
+              }
+            }
+          },
+          "500": {
+            "description": "예외 케이스 외의 처리 에러",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": { "example": "댓글 작성에 실패하였습니다" }
+              }
+            }
+          },
+          "403": {
+            "description": "로그인 쿠키 오류",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": { "example": "로그인이 필요한 기능입니다." }
+              }
+            }
+          },
+          "404": {
+            "description": "게시글이 존재하지 않는 경우",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": {
+                  "example": "월드컵 게시물이 존재하지 않습니다."
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": { "example": "데이터 형식이 올바르지 않습니다" }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "description": "월드컵 게시물 댓글 조회",
+        "parameters": [
+          {
+            "name": "worldcup_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "status:200",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "comments": {
+                  "example": [
+                    {
+                      "comment_id": 2,
+                      "comment": "댓글 내용",
+                      "user_id": 1,
+                      "nickname": "kim_cool",
+                      "createdAt": "2022-07-25T07:45:56.000Z",
+                      "updatedAt": "2022-07-25T07:45:56.000Z"
+                    },
+                    {
+                      "comment_id": 3,
+                      "comment": "댓글 내용123",
+                      "user_id": 2,
+                      "nickname": "kim_cool123",
+                      "createdAt": "2022-07-25T07:45:56.000Z",
+                      "updatedAt": "2022-07-25T07:45:56.000Z"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "예외 케이스 외의 처리 에러",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": { "example": "댓글 조회에 실패하였습니다" }
+              }
+            }
+          },
+          "404": {
+            "description": "게시글이 존재하지 않는 경우",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": {
+                  "example": "월드컵 게시물이 존재하지 않습니다."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/worldcup/{worldcup_id}/comments/{comment_id}": {
+      "put": {
+        "description": "월드컵 게시물 댓글 수정",
+        "parameters": [
+          {
+            "name": "worldcup_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "comment_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "comment": { "example": "수정된 댓글입니다." }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "status:200",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": { "example": "댓글 수정 완료" }
+              }
+            }
+          },
+          "500": {
+            "description": "예외 케이스 외의 처리 에러",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": { "example": "댓글 수정에 실패하였습니다" }
+              }
+            }
+          },
+          "403": {
+            "description": "로그인 쿠키 오류",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": { "example": "로그인이 필요한 기능입니다." }
+              }
+            }
+          },
+          "404": {
+            "description": "게시글이 존재하지 않는 경우",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": {
+                  "example": "댓글이 존재하지 않습니다."
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": { "example": "데이터 형식이 올바르지 않습니다" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "월드컵 게시물 댓글 삭제",
+        "parameters": [
+          {
+            "name": "worldcup_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "comment_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "status:200",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": { "example": "댓글 삭제 완료" }
+              }
+            }
+          },
+          "500": {
+            "description": "예외 케이스 외의 처리 에러",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": { "example": "댓글 삭제에 실패하였습니다" }
+              }
+            }
+          },
+          "403": {
+            "description": "로그인 쿠키 오류",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": { "example": "로그인이 필요한 기능입니다." }
+              }
+            }
+          },
+          "404": {
+            "description": "댓글이 존재하지 않는 경우",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": {
+                  "example": "댓글이 존재하지 않습니다."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/worldcup/{worldcup_id}/likes": {
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "worldcup_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "status:200",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "example": "월드컵 좋아요 완료 or 좋아요 취소 완료"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "예외 케이스 외의 처리 에러",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": { "example": "좋아요에 실패하였습니다" }
+              }
+            }
+          },
+          "403": {
+            "description": "로그인 쿠키 오류",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": { "example": "로그인이 필요한 기능입니다." }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/signup": {
+      "post": {
+        "description": "회원가입",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nickname": { "example": "dev." },
+                "password": { "example": "1234" },
+                "emial": {
+                  "example": "dev123@dev.com"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "status:200",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "example": "회원가입 완료"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "예외 케이스 외의 처리 에러",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": {
+                  "example": "요청한 데이터 형식이 올바르지 않습니다."
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "데이터 validation 오류",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": {
+                  "example": "...(닉네임, 이메일 ,패스워드, etc)의 형식이 일치하지 않습니다."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "description": "로그인",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nickname": { "example": "dev." },
+                "password": { "example": "1234" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "status:200",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "example": "로그인 완료"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "예외 케이스 외의 처리 에러",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": {
+                  "example": "로그인에 실패하였습니다."
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "해당하는 유저가 존재하지 않는 경우",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": {
+                  "example": "닉네임 또는 패스워드를 확인해주세요."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/{user_id}/logout": {
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "status:200",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": { "example": "로그아웃 완료" }
+              }
+            }
+          },
+          "500": {
+            "description": "예외 케이스 외의 처리 에러",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": { "example": "로그아웃에 실패하였습니다" }
+              }
+            }
+          },
+          "403": {
+            "description": "로그인 쿠키 오류",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": { "example": "로그인이 필요한 기능입니다." }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/mypage/worldcup": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "status:200",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "results": {
+                  "example": [
+                    {
+                      "title": "최애 라면 월드컵",
+                      "choice_name": "신라면"
+                    },
+                    {
+                      "title": "점메추",
+                      "choice_name": "제육볶음"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "예외 케이스 외의 처리 에러",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": {
+                  "example": "내가 만든 월드컵 조회에 실패하였습니다"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "로그인 쿠키 오류",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": { "example": "로그인이 필요한 기능입니다." }
+              }
+            }
+          },
+          "404": {
+            "description": "결과가 존재하지 않는 경우",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": {
+                  "example": "내가 만든 월드컵이 존재하지 않습니다."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/mypage/worldcup_result": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "status:200",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "results": {
+                  "example": [
+                    {
+                      "title": "최애 라면 월드컵",
+                      "choice_name": "신라면"
+                    },
+                    {
+                      "title": "점메추",
+                      "choice_name": "제육볶음"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "예외 케이스 외의 처리 에러",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": {
+                  "example": "월드컵 결과 조회에 실패하였습니다"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "로그인 쿠키 오류",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": { "example": "로그인이 필요한 기능입니다." }
+              }
+            }
+          },
+          "404": {
+            "description": "결과가 존재하지 않는 경우",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": {
+                  "example": "월드컵 결과가 존재하지 않습니다."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/worldcup/{worldcup_id}/result": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "worldcup_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "worldcup_choice_id": {
+                  "type": "integer",
+                  "example": 1
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "status:200",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": { "example": "월드컵 결과 저장 완료" }
+              }
+            }
+          },
+          "500": {
+            "description": "예외 케이스 외의 처리 에러",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": {
+                  "example": "월드컵 결과 저장에 실패하였습니다."
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "로그인 쿠키 오류",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": { "example": "로그인이 필요한 기능입니다." }
+              }
+            }
+          },
+          "404": {
+            "description": "게시글/게시글 선택지가 존재하지 않는 경우",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": {
+                  "example": "월드컵 게시물 or 선택지가 존재하지 않습니다."
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": { "example": "데이터 형식이 올바르지 않습니다" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/worldcup/{worldcup_id}/result/{worldcup_choice_id}": {
+      "get": {
+        "description": "월드컵 플레이 결과 조회",
+        "parameters": [
+          {
+            "name": "worldcup_id",
+            "in": "path",
+            "required": true,
+            "type": "int"
+          },
+          {
+            "name": "worldcup_choice_id",
+            "in": "path",
+            "required": true,
+            "type": "int"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "worldcupResult": {
+                  "example": {
+                    "worldcup_id": 1,
+                    "user_id": 1,
+                    "choice_name": "신라면",
+                    "choice_url": "img.png",
+                    "title": "제목입니다.",
+                    "content": "내용입니다.",
+                    "win_count": 3,
+                    "play_count": 12,
+                    "win_percentage": 25
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "예외 케이스 외의 처리 에러",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": {
+                  "example": "월드컵 결과 조회에 실패하였습니다"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "로그인 쿠키 오류",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": { "example": "로그인이 필요한 기능입니다." }
+              }
+            }
+          },
+          "404": {
+            "description": "게시글/게시글 선택지가 존재하지 않는 경우",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": {
+                  "example": "월드컵 게시물 or 선택지가 존재하지 않습니다."
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorMessage": { "example": "데이터 형식이 올바르지 않습니다" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
